@@ -80,6 +80,30 @@
 
     </LinearLayout>
 
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/choose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Picture"
+            android:textColor="@android:color/white"
+            android:background="@color/colorPrimary"/>
+
+        <ImageView
+            android:id="@+id/preview_image"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_toRightOf="@+id/choose"
+            android:layout_marginLeft="50dp"/>
+
+
+    </RelativeLayout>
+
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"

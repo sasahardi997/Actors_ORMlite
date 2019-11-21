@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RatingBar;
@@ -102,6 +104,10 @@ public class DetailFragment extends Fragment {
         Log.v("DetailFragment","onCreateView()");
         setHasOptionsMenu(true);
         View view=inflater.inflate(R.layout.detail_fragment,container,false);
+
+       ImageView imageView=(ImageView) view.findViewById(R.id.image);
+        Uri mUri=Uri.parse(actor.getImage());
+        imageView.setImageURI(mUri);
 
         EditText name=(EditText) view.findViewById(R.id.actor_name);
         name.setText(actor.getmName());

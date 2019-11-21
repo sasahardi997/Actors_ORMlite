@@ -17,7 +17,9 @@ public class Actor {
     public static final String FIELD_NAME_BIOGRAPHY="biography";
     public static final String FIELD_NAME_RATING="rating";
     public static final String FIELD_NAME_DATE="date";
+    public static final String FIELD_NAME_IMAGE="image";
     public static final String TABLE_MOVIE_MOVIES="movies";
+
 
     @DatabaseField(columnName = FIELD_NAME_ID,generatedId = true)
     private int mId;
@@ -33,6 +35,9 @@ public class Actor {
 
     @DatabaseField(columnName = FIELD_NAME_DATE)
     private String date;
+
+    @DatabaseField(columnName = FIELD_NAME_IMAGE)
+    private String image;
 
     @ForeignCollectionField(columnName = Actor.TABLE_MOVIE_MOVIES,eager = true)
     private ForeignCollection<Movie> movies;
@@ -79,6 +84,14 @@ public class Actor {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public ForeignCollection<Movie> getMovies() {
