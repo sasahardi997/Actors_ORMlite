@@ -1,6 +1,11 @@
 package com.myappcompany.hardi.actors.fragment;
 
 import android.app.Dialog;
+import android.app.NotificationManager;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -28,11 +33,13 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
 
 public class DetailFragment extends Fragment {
 
     private Actor actor;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -131,10 +138,10 @@ public class DetailFragment extends Fragment {
             e.printStackTrace();
         }
 
-
-
         return view;
     }
+
+
 
     public void setActor(Actor actor){
         this.actor=actor;
@@ -144,6 +151,8 @@ public class DetailFragment extends Fragment {
         try {
             if (actor != null) {
                 ((MainActivity) getActivity()).getDatabaseHelper().getActorDao().delete(actor);
+
+                ((MainActivity)getActivity()).showMessage("Actor deleted");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -164,6 +173,9 @@ public class DetailFragment extends Fragment {
 
         try {
             ((MainActivity)getActivity()).getDatabaseHelper().getActorDao().update(actor);
+
+            ((MainActivity)getActivity()).showMessage("Actor detail updated");
+
         }catch (SQLException E){
             E.printStackTrace();
         }
@@ -194,6 +206,9 @@ public class DetailFragment extends Fragment {
                     e.printStackTrace();
                 }
                 refresh();
+
+                ((MainActivity)getActivity()).showMessage("New moview added to actor");
+
                 dialog.dismiss();
             }
         });
